@@ -10,7 +10,7 @@ if(isset($_GET['p_id'])){
     $post_id = $row['post_id'];
     $post_author = $row['post_author'];
     $post_title = $row['post_title'];
-    $post_category_id = $row['post_category_id'];
+    $post_category_id = $row['post_category'];
     $post_status = $row['post_status'];
     $post_image = $row['post_image'];
     $post_content = $row['post_content'];
