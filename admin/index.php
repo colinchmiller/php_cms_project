@@ -34,7 +34,13 @@
                                  <i class="fa fa-file-text fa-5x"></i>
                              </div>
                              <div class="col-xs-9 text-right">
-                           <div class='huge'>12</div>
+                               <?php
+                                  //obtaining the number of posts and displaying
+                                  $query = "SELECT * FROM posts ";
+                                  $select_all_posts = mysqli_query($connection, $query);
+                                  $posts_count = mysqli_num_rows($select_all_posts);
+                                  echo "<div class='huge'>$posts_count</div>";
+                                ?>
                                  <div>Posts</div>
                              </div>
                          </div>
@@ -56,7 +62,13 @@
                                  <i class="fa fa-comments fa-5x"></i>
                              </div>
                              <div class="col-xs-9 text-right">
-                              <div class='huge'>23</div>
+                               <?php
+                                  //obtaining the number of comments and displaying
+                                  $query = "SELECT * FROM comments ";
+                                  $select_all_comments = mysqli_query($connection, $query);
+                                  $comments_count = mysqli_num_rows($select_all_comments);
+                                  echo "<div class='huge'>$comments_count</div>";
+                                ?>
                                <div>Comments</div>
                              </div>
                          </div>
@@ -78,7 +90,13 @@
                                  <i class="fa fa-user fa-5x"></i>
                              </div>
                              <div class="col-xs-9 text-right">
-                             <div class='huge'>23</div>
+                               <?php
+                                  //obtaining the number of users and displaying
+                                  $query = "SELECT * FROM users ";
+                                  $select_all_users = mysqli_query($connection, $query);
+                                  $users_count = mysqli_num_rows($select_all_users);
+                                  echo "<div class='huge'>$users_count</div>";
+                                ?>
                                  <div> Users</div>
                              </div>
                          </div>
@@ -100,7 +118,13 @@
                                  <i class="fa fa-list fa-5x"></i>
                              </div>
                              <div class="col-xs-9 text-right">
-                                 <div class='huge'>13</div>
+                               <?php
+                                  //obtaining the number of categories and displaying
+                                  $query = "SELECT * FROM categories ";
+                                  $select_all_categories = mysqli_query($connection, $query);
+                                  $categories_count = mysqli_num_rows($select_all_categories);
+                                  echo "<div class='huge'>$categories_count</div>";
+                                ?>
                                   <div>Categories</div>
                              </div>
                          </div>
@@ -117,6 +141,40 @@
          </div>
                          <!-- /.row -->
 
+        <div class="row">
+          <script type="text/javascript">
+            google.charts.load('current', {'packages':['bar']});
+            google.charts.setOnLoadCallback(drawChart);
+            function drawChart() {
+              var data = google.visualization.arrayToDataTable([
+                ['Data', 'Count'],
+                  <?php
+                  //dynamically building graph content
+                    $element_text = ['Active Posts', 'Comments', 'Users', 'Categories'];
+                    $element_count = [$posts_count, $comments_count, $users_count, $categories_count];
+                    for($i=0; $i<4; $i++){
+                      echo "['{$element_text[$i]}'" . "," . "{$element_count[$i]}],";
+                    }
+
+                   ?>
+                // ['Posts', 1000]
+
+              ]);
+
+              var options = {
+                chart: {
+                  title: '',
+                  subtitle: '',
+                }
+              };
+
+              var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+              chart.draw(data, options);
+            }
+          </script>
+          <div id="columnchart_material" style="width: 'auto'; height: 500px;"></div>
+        </div>
 
 
             </div>
