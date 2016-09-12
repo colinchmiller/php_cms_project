@@ -140,6 +140,19 @@
              </div>
          </div>
                          <!-- /.row -->
+        <?php
+        $query = "SELECT * FROM posts WHERE post_status = 'draft' ";
+        $select_all_draft_posts = mysqli_query($connection, $query);
+        $posts_draft_count = mysqli_num_rows($select_all_draft_posts);
+
+        $query = "SELECT * FROM comments WHERE comment_status = 'unapproved' ";
+        $unnaproved_comments_query = mysqli_query($connection, $query);
+        $unnaproved_comment_count = mysqli_num_rows($unnaproved_comments_query);
+
+        $query = "SELECT * FROM users WHERE user_role = 'subscriber'";
+        $select_all_subscribers = mysqli_query($connection, $query);
+        $subscriber_count = mysqli_num_rows($select_all_subscribers);
+         ?>
 
         <div class="row">
           <script type="text/javascript">
@@ -150,9 +163,9 @@
                 ['Data', 'Count'],
                   <?php
                   //dynamically building graph content
-                    $element_text = ['Active Posts', 'Comments', 'Users', 'Categories'];
-                    $element_count = [$posts_count, $comments_count, $users_count, $categories_count];
-                    for($i=0; $i<4; $i++){
+                    $element_text = ['Active Posts', 'Draft Posts', 'Comments', 'Unapproved Comments', 'Users', 'Subscribers', 'Categories'];
+                    $element_count = [$posts_count, $posts_draft_count, $comments_count, $unnaproved_comment_count, $users_count, $subscriber_count, $categories_count];
+                    for($i=0; $i<6; $i++){
                       echo "['{$element_text[$i]}'" . "," . "{$element_count[$i]}],";
                     }
 
