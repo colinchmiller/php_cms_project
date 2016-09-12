@@ -1,5 +1,13 @@
 <?php ob_start(); ?>
 <?php session_start(); ?>
+<!-- validate if user login is admin role -->
+<?php
+  if(!isset($_SESSION['user_role'])){
+    header("Location: ../index.php");
+  } else {
+    //need to check if role and allow the user through the link
+  }
+ ?>
 <?php include "../includes/db.php" ?>
 <?php include "functions.php" ?>
 
