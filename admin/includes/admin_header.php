@@ -44,7 +44,7 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <!-- WYSIWYG editor for text areas -->
     <script src="http://cdn.tinymce.com/4/tinymce.min.js"></script>
-    <script src="js/scripts.js"></script>
+    
 </head>
 
 <body>
