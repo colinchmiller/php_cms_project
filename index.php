@@ -26,10 +26,7 @@
                   $post_content = substr($row['post_content'], 0, 100);
                   $post_status = $row['post_status'];
 
-                  if($post_status !== 'published'){
-                    echo "<h1 class='text-center'> No Post Here Today</h1>";
-                  } else {
-
+                  if($post_status == 'published'){
                   ?>
 
                   <h1 class="page-header">
@@ -49,7 +46,7 @@
                   <a href="post.php?p_id=<?php echo $post_id ?>"><img class="img-responsive" src="images/<?php echo $post_image; ?>" alt=""></a>
                   <hr>
                   <p><?php echo $post_content ?></p>
-                  <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+                  <a class="btn btn-primary" href="post.php">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
                   <hr>
 

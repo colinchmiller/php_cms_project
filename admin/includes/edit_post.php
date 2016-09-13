@@ -10,7 +10,7 @@ if(isset($_GET['p_id'])){
     $post_id = $row['post_id'];
     $post_author = $row['post_author'];
     $post_title = $row['post_title'];
-    $post_category_id = $row['post_category'];
+    $post_category_id = $row['post_category_id'];
     $post_status = $row['post_status'];
     $post_image = $row['post_image'];
     $post_content = $row['post_content'];
@@ -87,8 +87,16 @@ if(isset($_POST['update_post'])){
   </div>
 
   <div class="form-group">
-    <label for="title">Post Status</label>
-    <input value="<?php echo $post_status ?>" type="text" name="post_status" class="form-control">
+    <select name="post_status" id="">
+      <option value='<?php echo $post_status; ?>'><?php echo $post_status;?></option>
+      <?php
+        if($post_status == 'published'){
+          echo "<option value='draft'>draft</option>";
+        } else {
+          echo "<option value='published'>published</option>";
+        }
+       ?>
+    </select>
   </div>
 
   <div class="form-group">
