@@ -141,6 +141,10 @@
          </div>
                          <!-- /.row -->
         <?php
+        $query = "SELECT * FROM posts WHERE post_status = 'published' ";
+        $select_all_published_posts = mysqli_query($connection, $query);
+        $posts_published_count = mysqli_num_rows($select_all_published_posts);
+
         $query = "SELECT * FROM posts WHERE post_status = 'draft' ";
         $select_all_draft_posts = mysqli_query($connection, $query);
         $posts_draft_count = mysqli_num_rows($select_all_draft_posts);
@@ -163,9 +167,9 @@
                 ['Data', 'Count'],
                   <?php
                   //dynamically building graph content
-                    $element_text = ['Active Posts', 'Draft Posts', 'Comments', 'Unapproved Comments', 'Users', 'Subscribers', 'Categories'];
-                    $element_count = [$posts_count, $posts_draft_count, $comments_count, $unnaproved_comment_count, $users_count, $subscriber_count, $categories_count];
-                    for($i=0; $i<6; $i++){
+                    $element_text = ['All Posts', 'Active Posts', 'Draft Posts', 'Comments', 'Unapproved Comments', 'Users', 'Subscribers', 'Categories'];
+                    $element_count = [$posts_count, $posts_published_count, $posts_draft_count, $comments_count, $unnaproved_comment_count, $users_count, $subscriber_count, $categories_count];
+                    for($i=0; $i<7; $i++){
                       echo "['{$element_text[$i]}'" . "," . "{$element_count[$i]}],";
                     }
 
