@@ -17,7 +17,6 @@ $connection = new mysqli($hostname, $username, $password, $database);
 if($connection->connect_error){
   die("Connection failed: " . $connection->connect_error);
 }
-echo "Connection was successfully established!";
 
 // For Local Hosting
 // $db['db_host'] = "localhost";
