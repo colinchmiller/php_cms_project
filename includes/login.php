@@ -1,6 +1,6 @@
 <?php include "db.php"; ?>
 <?php session_start(); ?>
- 
+
 <?php
 if(isset($_POST['login'])){
   $username = $_POST['username'];
@@ -24,6 +24,9 @@ if(isset($_POST['login'])){
     $db_user_lastname = $row['user_lastname'];
     $db_user_role = $row['user_role'];
   }
+
+  $password = crypt($password, $db_user_password);
+
   //validation on login form
   if($username === $db_username && $password === $db_user_password){
     $_SESSION['username'] = $db_username;
