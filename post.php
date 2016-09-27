@@ -19,6 +19,10 @@
 
               $the_post_id = $_GET['p_id'];
 
+              $view_query = "UPDATE posts SET post_views_count = post_views_count + 1 WHERE post_id = $the_post_id";
+              $send_query = mysqli_query($connection, $view_query);
+              if(!$send_query){
+                die("QUERY FAILED");
               }
 
                 $query = "SELECT * FROM posts WHERE post_id = $the_post_id";
@@ -55,7 +59,11 @@
 
 
 
-              <?php } ?>
+              <?php }
+            } else {
+              header("Location: index.php");
+            }
+              ?>
 
               <!-- Blog Comments -->
 
