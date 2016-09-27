@@ -41,10 +41,11 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <link href="css/styles.css" rel="stylesheet">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <!-- WYSIWYG editor for text areas -->
     <script src="http://cdn.tinymce.com/4/tinymce.min.js"></script>
-    
+
 </head>
 
 <body>
